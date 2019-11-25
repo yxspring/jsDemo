@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	js Function()函数没有重载
+ </body>
+<script>
+	function createCompairationFunction(argument){
+		return function(object1,object2){
+				var value1=object1[argument];
+				var value2=object2[argument];
+				if(value1<value2){
+					return -1;
+				}else if(value1>value2){
+					return 1;
+				}else{
+					return 0;
+				}
+		};
+	}
+	var data=[{name:"yuxingsheng",age:24},{name:"Richard",age:25}];
+	alert(data.sort(createCompairationFunction("name"))[0].name);
+	alert(data.sort(createCompairationFunction("age"))[0].name);
+</script>
+</html>
