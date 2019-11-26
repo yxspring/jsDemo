@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	阶乘递归函数
+ </body>
+ <script>
+	function factorial(num){
+		if(num<=1){
+		return 1;
+		}else{
+			return num*arguments.callee(num-1);
+		}
+	}
+	alert(factorial(5));
+ </script>
+</html>
