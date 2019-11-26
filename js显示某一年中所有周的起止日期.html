@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  
+ </body>
+ <script>
+/**
+ * 根据年份计算总周数
+ * @param year
+ * @returns {number}
+ */
+function getNumOfWeeks(year) {
+    //设置为这一年开始日期
+    var startDateOfYear = new Date(year, 0, 1);
+    //计算这一年有多少天
+    var daysOfYear = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? 366 : 365;
+    //366（365）/7=52.2(52.1)，所以一般一年有52周余1天或者2天，当这一年有366天时且第一天是周日，那么他的最后一天则是周一，这一年就有54周。
+    var weekNum = 53;
+    //当年份是闰年且第一天是周日时有54周
+    if (startDateOfYear.getDay() == 0 && daysOfYear == 366) {
+        weekNum = 54;
+    }
+    return weekNum;
+}
+//var firstSunday = new Date(2019, 0, 1);//获取传入年份的第一天 
+//var n = 6 - (firstSunday.getDay() + 6) % 7;//距离周末差几天  0  周日  6   周六
+//firstSunday.setDate(firstSunday.getDate() + n); //获取第一个的周末日期
+alert(weekAndDayArrays('2019'));
+/**
+ * 点击年份，显示选中的年份，传入选中的年份输出一个周数 加月份的数组
+ * @param text
+ */
+function weekAndDayArrays(year_arg) {
+        var year = parseInt(year_arg.substring(0, year_arg.length));
+		var weekAndDay=[];
+        //计算出这年的周数
+        var weekNum = getNumOfWeeks(year);
+        //首先算出这年的第一个星期日
+        var firstSunday = new Date(year, 0, 1);//获取传入年份的第一天 
+        var n = 6 - (firstSunday.getDay() + 6) % 7;//距离周末差几天  0  周日  6   周六
+        firstSunday.setDate(firstSunday.getDate() + n); //获取第一个的周末日期
+        //根据年份设置周数
+        for (var i = 1; i <= weekNum; i++) {
+            if (i == 1) {
+				var msDay=format(new Date(year, 0, 1),"yyyy-MM-dd")+'至'+format(firstSunday,"yyyy-MM-dd");
+				weekAndDay.push(msDay)
+            } else {
+				weekAndDay=getDateRange(firstSunday,weekAndDay);
+            }
+        }
+		return weekAndDay;
+}
+
+/**
+ * 根据上周日获取这周日的日期范围 f
+ * @param lastSunday
+ * @returns {arrays}
+ */
+function getDateRange(lastSunday,weekAndDay) {
+    if (lastSunday == null || lastSunday == '') {
+        return "";
+    }
+    var beginDate = new Date(lastSunday.setDate(lastSunday.getDate() + 1));
+    var endDate = new Date(lastSunday.setDate(lastSunday.getDate() + 6));
+	var msDay=format(beginDate,"yyyy-MM-dd")+'至'+format(endDate,"yyyy-MM-dd");
+	weekAndDay.push(msDay)
+    return weekAndDay;
+}
+
+
+/**
+ * 格式化日期
+ */
+function format(date, fmt) {
+  var data = new Date(date)
+  var o = {
+    "M+": data.getMonth() + 1,                 //月份
+    "d+": data.getDate(),                    //日
+    "h+": data.getHours(),                   //小时
+    "m+": data.getMinutes(),                 //分
+    "s+": data.getSeconds(),                 //秒
+    "q+": Math.floor((data.getMonth() + 3) / 3), //季度
+    "S": data.getMilliseconds()             //毫秒
+  };
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (data.getFullYear() + "").substr(4 - RegExp.$1.length));
+  }
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    }
+  }
+  return fmt;
+}
+</script>
+</html>
