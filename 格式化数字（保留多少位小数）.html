@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  格式化数字，取小数点后多少位数字。
+ </body>
+ <script>
+	/**
+ * 格式化数字，将参数按照指定小数位数(默认是2位，可以不输入)输出。
+ * exmple1:numberFormat(参数,小数位数)  例如：numberFormat(2.789,4)
+ * exmple2:numberFormat(2.678) 按照两位小数输出。
+ * 出错返回 "-1"
+*/
+function numberFormat(){
+    if (!isNaN(parseFloat(arguments[0]))) {
+      return parseFloat(arguments[0]).toFixed(arguments[1] == null ? 2 : parseInt(arguments[1]));
+    } else {
+      return "-1";
+    }
+}
+alert(numberFormat(-2.13,3));
+ </script>
+</html>
