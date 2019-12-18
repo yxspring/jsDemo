@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="yxspring">
+  <meta name="Keywords" content="第一个面向对象的程序">
+  <meta name="Description" content="第一个面向对象的程序原型模式">
+  <title>第一个面向对象的程序 原型模式</title>
+ </head>
+<body>
+		
+</body>
+<script>
+	function createPerson(name,qq){
+		this.name=name;
+		this.qq=qq;
+		this.showName=function(){
+			alert(this.name);
+		};
+		this.showQQ=function(){
+			alert(this.qq);
+		};
+	}
+	var obj=new createPerson('yxspring','12345');
+	obj.showName();
+</script>
+</html>

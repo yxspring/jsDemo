@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="yxspring">
+  <meta name="Keywords" content="this">
+  <meta name="Description" content="this学习">
+  <title>this学习</title>
+ </head>
+ <body>
+      this真正代表什么？
+		1. 当前事件发生的对象
+		2. 当前方法属于谁
+	不能在系统对象中随意添加属性和方法，否则会覆盖已有的方法和属性。
+ </body>
+ <script>
+		var arr=[1,2,3,4,5];
+		arr.a=12;
+		a=13;
+		//在全局global环境下 当前方法属于window 相当于
+		//     window.aaa=function(){    alert(this);  }
+		function aaa(){
+			alert(this.a);//结果为 13
+		}
+		aaa();
+		arr.aaa=function ()
+		{
+			alert(this.a);//结果为 12
+		}
+		arr.aaa();
+ </script>
+</html>

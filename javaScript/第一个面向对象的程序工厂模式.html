@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="yxspring">
+  <meta name="Keywords" content="第一个面向对象的程序">
+  <meta name="Description" content="第一个面向对象的程序">
+  <title>第一个面向对象的程序</title>
+ </head>
+ <body>
+	工厂模式存在的问题：
+		1.没有new
+		2.函数调用浪费。
+ </body>
+<script>
+function createPerson(name,qq){
+		var obj=new Object();
+			obj.name=name;
+			obj.qq=qq;
+			obj.showName=function(){
+				alert("我的名字是 "+this.name);
+			};
+			obj.showQQ=function(){
+				alert("我的QQ号是 "+this.qq);
+			};
+			return obj;
+	}
+	var obj=createPerson('yxspring','3301068083');
+	obj.showName();
+	obj.showQQ();
+	var obj2=createPerson('zyxs','909098989');
+	obj2.showName();
+	obj2.showQQ();
+	alert(obj.showQQ==obj2.showQQ)//false
+</script>
+</html>
