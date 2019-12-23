@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+		原型 就是css中的class
+		行间样式： 对象中的事件
+ </body>
+<script>
+var arr1=new Array(1,2,3,4);
+var arr2=new Array(10,12,13,15);
+Array.prototype.sum=function(){//原型
+//arr1.sum=function(){//行间样式
+	var result=0;
+	for(var i=0;i<this.length;i++){	
+		result+=this[i];
+	}
+	return result;
+};
+alert(arr1.sum());
+alert(arr2.sum());
+</script>
+</html>
