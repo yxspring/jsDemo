@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>寻找截取字符串指定数据</title>
+ </head>
+ <body>
+	var str=http://rczs.jnbusiness.jinan.gov.cn/ctm/inf/trace.cmd?method=fortraceinfo&tranId=37011201221120000020
+	方法：
+		.indexOf("o", 6))
+ </body>
+	<script>
+		function getString(){
+			var str="http://rczs.jnbusiness.jinan.gov.cn/ctm/inf/trace.cmd?method=fortraceinfo&tranId=37011201221120000020"
+			alert("str.indexOf('tranId=')"+(str.indexOf("tranId=")+7));
+			alert(str.substring(str.indexOf("tranId=")+7));
+		}
+		getString();
+	</script>
+</html>

@@ -9,19 +9,22 @@
   <title>Document</title>
  </head>
  <body>
-  函数和new
-
+  闭包
  </body>
  <script>
-	function say(){
-		alert(this);
-	}
-	say();// window
-	new say();//object
-	 //其实new 在偷偷做这样的事情
-	/*function say(){
-		var obj=new Object();
-		return obj;
-	}*/
+   var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+			return function(){
+				alert(this);
+　　　　　　　　return this.name;
+　　　　　　};
+　　　　}
+
+　　};
+
+　　alert(object.getNameFunc()());
+ 
  </script>
 </html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  使用原型改在第一个面向对象程序：
+	使用构造函数加属性
+	使用原型加方法
+ </body>
+<script>
+function CreatePerson(name,qq){
+	this.name=name;
+	this.qq=qq;
+};
+CreatePerson.prototype.showName=function(){
+	alert("我的名字是"+this.name);
+};
+CreatePerson.prototype.showQQ=function(){
+		alert("我的qq是"+this.qq);
+};
+var people1=new CreatePerson('张三','123');
+var people2=new CreatePerson('李四','235');
+people1.showName();
+alert(people1.showName==people2.showName);
+</script>
+</html>
